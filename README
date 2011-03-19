@@ -1,0 +1,47 @@
+Nepal Map API
+=============
+
+PHP API to generate Nepal's map with options to highlight districts.
+
+See example.php for usage example. Demo at http://diyaalo.com/nepalmapapi
+
+
+Usage
+------
+
+<?
+
+// Include the library and create object:
+
+include("nepalmap.php");
+$map = new NepalMap();
+
+// Set options:
+
+// set image width
+$map->setWidth(1000); 
+
+// set stroke color array(r,g,b) and width
+$map->setStroke(array(0,0,0), 2); 
+
+// set fill color for districts
+// array format "district_name"=>array(r,g,b)
+$map->setDistrictFillColor(array("kathmandu"=>array(255,0,0),
+                                 "lalitpur"=>array(100,0,0)));
+                                 
+// generate map!
+$map->generateMap();  // sends to browser
+
+// or,
+$map->generateMap("/path/to/file.png");  // saves as file
+
+?>
+
+Other Options
+--------------
+
+getImageWidth(), getImageHeight()
+- Returns maps width and height
+
+htmlAreaCode()
+- Returns <area> html code to be used with <map>
