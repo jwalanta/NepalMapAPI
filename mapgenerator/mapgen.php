@@ -55,16 +55,20 @@ if (isset($_POST['generate-map'])){
 	$range = (float)($max - $min);
 	
 	// now set the colors for district
-	foreach ($v as $l){
-		$p=explode(",",$l);
-		
-		// set color by extrapolating
-		$map->setDistrictFillColor(array($p[0]=>array(	$minr + ( ($p[1]-$min)/$range ) * $rrange, 
-														$ming + ( ($p[1]-$min)/$range ) * $grange,  
-														$minb + ( ($p[1]-$min)/$range ) * $brange)));
-														
-	
-	}
+    if ($range!=0){
+        foreach ($v as $l){
+            if (trim($l)=='') continue;
+        
+            $p=explode(",",$l);
+            
+            // set color by extrapolating
+            $map->setDistrictFillColor(array($p[0]=>array(	$minr + ( ($p[1]-$min)/$range ) * $rrange, 
+                                                            $ming + ( ($p[1]-$min)/$range ) * $grange,  
+                                                            $minb + ( ($p[1]-$min)/$range ) * $brange)));
+                                                            
+        
+        }
+    }
 	
 	if ($_POST["type"]=="image") $map->generateMap();
 	else echo "<html><body><pre>".htmlentities($map->htmlAreaCode())."</pre></body></html>";
