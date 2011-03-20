@@ -44,4 +44,4 @@ getImageWidth(), getImageHeight()
 - Returns maps width and height
 
 htmlAreaCode()
-- Returns <area> html code to be used with <map>
+- Returns <area> html code to be used with <map>. See maphilight (http://plugins.jquery.com/project/maphilight) or mapper.js (http://www.netzgesta.de/mapper/) on using this data.
